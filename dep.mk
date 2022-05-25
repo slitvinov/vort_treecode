@@ -1,0 +1,24 @@
+# generate by tool/dep
+comp_f.o: comp_f.h
+comp_f.o: proj.h
+comp_f.o: tree.h
+disk_stats.o: disk_stats.h
+disk_stats.o: proj.h
+gendat.o: io.h
+gendat.o: proj.h
+io.o: io.h
+io.o: proj.h
+main.o: comp_f.h
+main.o: disk_stats.h
+main.o: io.h
+main.o: proj.h
+main.o: refine.h
+main.o: tree.h
+refine.o: proj.h
+refine.o: refine.h
+tree.o: proj.h
+tree.o: tree.h
+vel.o: comp_f.h
+vel.o: io.h
+vel.o: proj.h
+vel.o: tree.h

@@ -1,4 +1,8 @@
+.POSIX:
+.SUFFIXES: .o
+.SUFFIXES: .c
 CC = c99
+LINK = $(CC)
 CFLAGS = -O2 -g
 
 all: prog gendat vel
@@ -16,14 +20,7 @@ gendat: $(gendat_objects)
 vel: $(vel_objects)
 	$(CC) $(CFLAGS) $(vel_objects) -lm -o vel
 
-clean:
-	rm -f *.o
+.c.o:; $(LINK) -c $(LDFLAGS) $<
+clean:; rm -f *.o
 
-comp_f.o: comp_f.c proj.h comp_f.h tree.h
-disk_stats.o: disk_stats.c proj.h disk_stats.h
-gendat.o: gendat.c proj.h io.h
-io.o: io.c proj.h io.h
-main.o: main.c proj.h comp_f.h refine.h io.h tree.h disk_stats.h
-refine.o: refine.c proj.h refine.h
-tree.o: tree.c proj.h tree.h
-vel.o: vel.c proj.h comp_f.h io.h tree.h
+include dep.mk

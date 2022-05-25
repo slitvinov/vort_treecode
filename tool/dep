@@ -1,0 +1,30 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+    printf "# generate by %s\n", "tool/dep"
+    for (i = 1; i in ARGV; i++) {
+        f = ARGV[i]
+        sub(/\.c$/, ".o", f)
+        line = 0
+        while (getline < ARGV[i] > 0) {
+            line++
+            if (sub(/^[\t ]*#[\t ]*include[\t ]*/, "") &&
+                sub(/^"/, "") &&
+                sub(/".*/, "")) {
+                if (!filep($0)) {
+                    printf "%s:%d: error: no such file '%s'\n", ARGV[i], line, $0 | "cat >&2"
+                    exit(1)
+                }
+                    
+                print f ": " $0 | "sort"
+            }
+        }
+        close(ARGV[i])
+    }
+}
+
+function filep(path, aux, rc) {
+  rc = getline aux < path
+  close(path)
+  return rc >= 0
+}
