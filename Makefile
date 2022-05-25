@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -ansi -Wall -O3
+CC = c99
+CFLAGS = -O2 -g
 
 all: prog gendat vel
 
