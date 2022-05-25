@@ -1,6 +1,3 @@
-#ifndef TREE_INCL
-#define TREE_INCL
-
 /* various maximums & minimums */
 #define MAX_P 8
 #define MAX_CHILD_CNT 8
@@ -33,5 +30,3 @@ int tree_cell_cnt (tree_cell *cell_ptr);
 REAL child_parent_ratio (tree_cell *cell_ptr);
 void tree_dump (FILE *f_ptr, tree_cell *cell_ptr);
 void free_tree (void);
-
-#endif /* if !defined(TREE_INCL) */

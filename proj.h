@@ -1,6 +1,3 @@
-#ifndef PROJ_INCL
-#define PROJ_INCL
-
 /**************************************************************/
 /* REAL is the floating point type to be used */
 #undef REAL
@@ -54,5 +51,3 @@ typedef struct {
 /* global variable declarations */
 
 extern const REAL pi, two_pi, four_pi;
-
-#endif /* if !defined(PROJ_INCL) */
