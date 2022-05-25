@@ -1,8 +1,6 @@
 #ifndef TREE_INCL
 #define TREE_INCL
 
-#include "proj.h"
-
 /* various maximums & minimums */
 #define MAX_P 8
 #define MAX_CHILD_CNT 8
