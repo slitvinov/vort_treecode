@@ -47,7 +47,4 @@ typedef struct {
    int fil_cnt, fil_alloc;
 } sheet;
 
-/**************************************************************/
-/* global variable declarations */
-
 extern const REAL pi, two_pi, four_pi;

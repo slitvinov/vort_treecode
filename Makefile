@@ -4,23 +4,24 @@
 CC = c99
 LINK = $(CC)
 CFLAGS = -O2 -g
+ALL = prog gendat vel
 
-all: prog gendat vel
+all: $(ALL)
 
 prog_objects = main.o io.o comp_f.o refine.o tree.o disk_stats.o
 gendat_objects = gendat.o io.o
 vel_objects = vel.o io.o comp_f.o tree.o
 
 prog: $(prog_objects)
-	$(CC) $(CFLAGS) $(prog_objects) -lm -o prog
+	$(LINK) $(LDFLAGS) $(prog_objects) -lm -o prog
 
 gendat: $(gendat_objects)
-	$(CC) $(CFLAGS) $(gendat_objects) -lm -o gendat
+	$(LINK) $(LDFLAGS) $(gendat_objects) -lm -o gendat
 
 vel: $(vel_objects)
-	$(CC) $(CFLAGS) $(vel_objects) -lm -o vel
+	$(LINK) $(LDFLAGS) $(vel_objects) -lm -o vel
 
-.c.o:; $(LINK) -c $(LDFLAGS) $<
-clean:; rm -f *.o
+.c.o:; $(CC) -c $(CFLAGS) $<
+clean:; rm -f $(prog_objects) $(gendat_objects) $(vel_objects) $(ALL)
 
 include dep.mk
