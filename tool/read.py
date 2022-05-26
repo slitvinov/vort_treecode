@@ -3,6 +3,8 @@ import struct
 import numpy as np
 
 REAL = 'd'
+
+
 def read_real(f, n):
     buf = f.read(struct.calcsize(REAL * n))
     return struct.unpack(REAL * n, buf)
@@ -28,7 +30,8 @@ with open(sys.argv[1], 'rb') as f:
             nodes.append(node)
 
 nnodes = sum(len(node) for node in nodes)
-nbytes = sum(3 * node.nbytes // 4 for node in nodes)
+pos_nbytes = sum(3 * node.nbytes // 4 for node in nodes)
+theta_nbytes = sum(node.nbytes // 4 for node in nodes)
 
 with open(sys.argv[2], 'wb+') as f:
     f.write(b"""\
@@ -38,12 +41,21 @@ BINARY
 DATASET POLYDATA
 POINTS %d double
 """ % nnodes)
-    offset = f.tell()
-    f.seek(nbytes - 1, 1)
+    pos_offset = f.tell()
+    f.seek(pos_nbytes - 1, 1)
     f.write(b'\0')
-
-pos = np.memmap(sys.argv[2], '>' + REAL, 'r+', offset, (nnodes, 3))
+    f.write(b"""\
+POINT_DATA %d
+SCALARS theta double 1
+LOOKUP_TABLE default
+""" % nnodes)
+    theta_offset = f.tell()
+    f.seek(theta_nbytes - 1, 1)
+    f.write(b'\0')
+pos = np.memmap(sys.argv[2], '>' + REAL, 'r+', pos_offset, (nnodes, 3))
+theta = np.memmap(sys.argv[2], '>' + REAL, 'r+', theta_offset, nnodes)
 shift = 0
 for node in nodes:
     np.copyto(pos[shift:shift + len(node), :], node[:, 1:])
+    np.copyto(theta[shift:shift + len(node)], node[:, 0])
     shift += len(node)
