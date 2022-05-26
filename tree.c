@@ -9,22 +9,13 @@
 #define CELL_BLOCK_SIZE 16
 #define CELL_SPLIT_FACTOR 0.707
 
-/**************************************************************/
-/* local structure definitions */
-
 typedef struct cell_block {
    tree_cell cells[CELL_BLOCK_SIZE];
    struct cell_block *next_block;
    int cells_used;
 } cell_block;
 
-/**************************************************************/
-/* local variables */
-
 static cell_block *head_block, *curr_block;
-
-/**************************************************************/
-/* local prototypes */
 
 static tree_cell *split_node (int level, tree_cell *t_ptr, vect cut_pos, int node_min);
 static REAL coord (int dir, vect pos);
@@ -150,8 +141,6 @@ make_tree (int level, work *nodes, long node_cnt, int node_min)
    }
 }
 
-/**************************************************************/
-
 static tree_cell *
 split_node (int level, tree_cell *t_ptr, vect cut_pos, int node_min)
 {
@@ -223,8 +212,6 @@ split_node (int level, tree_cell *t_ptr, vect cut_pos, int node_min)
    return t_ptr;
 }
 
-/**************************************************************/
-
 static REAL
 coord (int dir, vect pos)
 {
@@ -240,8 +227,6 @@ coord (int dir, vect pos)
    return 0;
 }
 
-/**************************************************************/
-
 static void
 swap (work *nodes, long i, long j)
 {
@@ -249,8 +234,6 @@ swap (work *nodes, long i, long j)
    nodes[i] = nodes[j];
    nodes[j] = temp;
 }
-
-/**************************************************************/
 
 int
 depth (tree_cell *cell_ptr)
@@ -266,8 +249,6 @@ depth (tree_cell *cell_ptr)
    return c_depth;
 }
 
-/**************************************************************/
-
 int
 tree_cell_cnt (tree_cell *cell_ptr)
 {
@@ -277,8 +258,6 @@ tree_cell_cnt (tree_cell *cell_ptr)
       ans += tree_cell_cnt (cell_ptr->child[c_ind]);
    return ans + 1;
 }
-
-/**************************************************************/
 
 REAL
 child_parent_ratio (tree_cell *cell_ptr)
@@ -297,8 +276,6 @@ child_parent_ratio (tree_cell *cell_ptr)
    return ans;
 }
 
-/**************************************************************/
-
 void
 tree_dump (FILE *f_ptr, tree_cell *cell_ptr)
 {
@@ -310,8 +287,6 @@ tree_dump (FILE *f_ptr, tree_cell *cell_ptr)
    for (c_ind = 0; c_ind < cell_ptr->child_cnt; c_ind++)
       tree_dump (f_ptr, cell_ptr->child[c_ind]);
 }
-
-/**************************************************************/
 
 static int
 init_tree (void)
@@ -325,8 +300,6 @@ init_tree (void)
    curr_block = head_block;
    return 0;
 }
-
-/**************************************************************/
 
 static tree_cell *
 cell_alloc (void)
@@ -344,8 +317,6 @@ cell_alloc (void)
    return curr_block->cells + curr_block->cells_used++;
 }
 
-/**************************************************************/
-
 static cell_block *
 new_block (void)
 {
@@ -358,8 +329,6 @@ new_block (void)
    ans->cells_used = 0;
    return ans;
 }
-
-/**************************************************************/
 
 void
 free_tree (void)

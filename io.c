@@ -3,8 +3,6 @@
 #include "proj.h"
 #include "io.h"
 
-/**************************************************************/
-
 /* headers in data file info */
 #define R_HDR_CNT 8
 #define I_HDR_CNT 8
@@ -32,15 +30,10 @@ typedef struct {
  *
  */
 
-/**************************************************************/
-/* local prototypes */
-
 static int read_sheet (FILE *infile, sheet *a, int *node_alloc_tot);
 static int read_fil (FILE *infile, fil *a, int *node_alloc_tot);
 static int write_sheet (sheet a, FILE *outfile);
 static int write_fil (fil a, FILE *outfile);
-
-/**************************************************************/
 
 int
 readin (FILE *infile, REAL *del2, REAL *t0, REAL *dt0, REAL *vel0, REAL *vel, int *sheet_cnt, sheet sheets[MAX_SHEET_CNT],
@@ -84,8 +77,6 @@ readin (FILE *infile, REAL *del2, REAL *t0, REAL *dt0, REAL *vel0, REAL *vel, in
    return 0;
 }
 
-/**************************************************************/
-
 int
 read_sheet (FILE *infile, sheet *a, int *node_alloc_tot)
 {
@@ -120,8 +111,6 @@ read_sheet (FILE *infile, sheet *a, int *node_alloc_tot)
 
    return 0;
 }
-
-/**************************************************************/
 
 int
 read_fil (FILE *infile, fil *a, int *node_alloc_tot)
@@ -162,8 +151,6 @@ read_fil (FILE *infile, fil *a, int *node_alloc_tot)
    return 0;
 }
 
-/**************************************************************/
-
 int
 dump (REAL del2, REAL t, REAL dt0, REAL vel0, REAL vel, int sheet_cnt, sheet sheets[MAX_SHEET_CNT], FILE *outfile)
 {
@@ -199,8 +186,6 @@ dump (REAL del2, REAL t, REAL dt0, REAL vel0, REAL vel, int sheet_cnt, sheet she
    return 0;
 }
 
-/**************************************************************/
-
 static int
 write_sheet (sheet a, FILE *outfile)
 {
@@ -229,8 +214,6 @@ write_sheet (sheet a, FILE *outfile)
 
    return 0;
 }
-
-/**************************************************************/
 
 static int
 write_fil (fil a, FILE *outfile)

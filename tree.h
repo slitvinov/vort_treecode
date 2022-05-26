@@ -7,9 +7,6 @@
 #define VELOCITY 1
 #define BOUND POTENTIAL
 
-/**************************************************************/
-/* structure definitions */
-
 struct str_tree_cell {
    struct str_tree_cell *child[MAX_CHILD_CNT];
    vect exp_pt, width_2, mmnts[MAX_P][MAX_P][MAX_P];
@@ -20,9 +17,6 @@ struct str_tree_cell {
 };
 
 typedef struct str_tree_cell tree_cell;
-
-/**************************************************************/
-/* external function prototypes */
 
 tree_cell *make_tree (int level, work *nodes, long node_cnt, int node_min);
 int depth (tree_cell *cell_ptr);

@@ -9,9 +9,6 @@
 #define TREE_STATS 1
 #define MIN_NODE_CNT 64
 
-/**************************************************************/
-/* variables local to this module */
-
 static const REAL CFF_0 = 0.0333, CFF_1 = 0.0063485;
 static const REAL expansion_time[] = { 0, 0, 0.11, 0.18, 0.30, 0.48, 0.72, 1.03, 1.43, 1.93, 2.55 };
 
@@ -24,11 +21,7 @@ static long ord_level[MAX_P], ord_part_cnt[MAX_P], dir_level, dir_part_cnt;
 static int v_cnt;
 #endif
 
-/**************************************************************/
-/* local prototypes */
-
 static void init_work (int sheet_cnt, sheet sheets[MAX_SHEET_CNT], work *scratch, long *N_tot);
-
 static vect comp_vel (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr);
 static vect split (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr);
 static vect direct_sum (vect pos, REAL del2, tree_cell *cell_ptr);
@@ -36,8 +29,6 @@ static void comp_mmnts (int p, tree_cell *cell_ptr);
 static void scalar_mmnts (int p, vect diff, REAL mmnts[MAX_P][MAX_P][MAX_P]);
 static vect expansion (vect diff, REAL del2, int p, vect mmnts[MAX_P][MAX_P][MAX_P]);
 static void comp_cff (REAL del2, vect diff, int p, REAL ans[MAX_P + 1][MAX_P + 1][MAX_P + 1]);
-
-/**************************************************************/
 
 int
 f (REAL del2, int sheet_cnt, sheet sheets[MAX_SHEET_CNT], work *scratch, REAL tol, int node_min)
@@ -216,8 +207,6 @@ init_work (int sheet_cnt, sheet sheets[MAX_SHEET_CNT], work *scratch, long *N_to
    }
 }
 
-/**************************************************************/
-
 static vect
 comp_vel (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr)
 {
@@ -272,8 +261,6 @@ comp_vel (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr)
    return expansion (diff, del2, p, cell_ptr->mmnts);
 }
 
-/**************************************************************/
-
 static vect
 split (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr)
 {
@@ -293,8 +280,6 @@ split (vect pos, REAL del2, REAL tol, tree_cell *cell_ptr)
    }
    return vel;
 }
-
-/**************************************************************/
 
 static vect
 direct_sum (vect pos, REAL del2, tree_cell *cell_ptr)
@@ -331,8 +316,6 @@ direct_sum (vect pos, REAL del2, tree_cell *cell_ptr)
    }
    return ans;
 }
-
-/**************************************************************/
 
 static void
 comp_mmnts (int p, tree_cell *cell_ptr)
@@ -407,8 +390,6 @@ scalar_mmnts (int p, vect diff, REAL mmnts[MAX_P][MAX_P][MAX_P])
    }
 }
 
-/**************************************************************/
-
 static vect
 expansion (vect diff, REAL del2, int p, vect mmnts[MAX_P][MAX_P][MAX_P])
 {
@@ -436,8 +417,6 @@ expansion (vect diff, REAL del2, int p, vect mmnts[MAX_P][MAX_P][MAX_P])
 	 }
    return ans;
 }
-
-/**************************************************************/
 
 static void
 comp_cff (REAL del2, vect diff, int p, REAL ans[MAX_P + 1][MAX_P + 1][MAX_P + 1])

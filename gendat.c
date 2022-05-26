@@ -10,12 +10,7 @@ const REAL pi = 3.1415926535897932384626433832795;
 const REAL two_pi = 6.2831853071795864769252867665590;
 const REAL four_pi = 12.566370614359172953850573533118;
 
-/**************************************************************/
-/* local prototypes */
-
 static int init (int fil_cnt, sheet sheets[MAX_SHEET_CNT], REAL ang);
-
-/**************************************************************/
 
 int
 main (int argc, char **argv)
@@ -45,8 +40,6 @@ main (int argc, char **argv)
 
    return dump (del * del, 0.0, dt0, 0.0, 0.0, 2, sheets, outfile) ? EXIT_FAILURE : EXIT_SUCCESS;
 }
-
-/**************************************************************/
 
 static int
 init (int fil_cnt, sheet sheets[MAX_SHEET_CNT], REAL ang)

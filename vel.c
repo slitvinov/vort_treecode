@@ -12,14 +12,9 @@ const REAL pi = 3.1415926535897932384626433832795;
 const REAL two_pi = 6.2831853071795864769252867665590;
 const REAL four_pi = 12.566370614359172953850573533118;
 
-/**************************************************************/
-/* local prototypes */
-
 static int get_args (char **argv, FILE **infile, REAL *tol, int *node_min, FILE **outfile);
 static vect v_add (vect a, REAL beta, vect b);
 static void free_sheets (int sheet_cnt, sheet sheets[MAX_SHEET_CNT]);
-
-/**************************************************************/
 
 int
 main (int argc, char *argv[])
@@ -101,8 +96,6 @@ get_args (char **argv, FILE **infile, REAL *tol, int *node_min, FILE **outfile)
    return 0;
 }
 
-/**************************************************************/
-
 static vect
 v_add (vect a, REAL beta, vect b)
 {
@@ -114,8 +107,6 @@ v_add (vect a, REAL beta, vect b)
 
    return ans;
 }
-
-/**************************************************************/
 
 static void
 free_sheets (int sheet_cnt, sheet sheets[MAX_SHEET_CNT])

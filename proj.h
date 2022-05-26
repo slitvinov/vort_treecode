@@ -18,9 +18,6 @@
 
 #define MAX_SHEET_CNT 4
 
-/**************************************************************/
-/* structure definitions */
-
 typedef struct {
    REAL x1, x2, x3;
 } vect;

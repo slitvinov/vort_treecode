@@ -7,13 +7,8 @@
 #include "proj.h"
 #include "refine.h"
 
-/**************************************************************/
-/* variables local to this module */
 static long M_tot;
 static int realloc_flag;
-
-/**************************************************************/
-/* local prototypes */
 
 static int refine_sheet (REAL eps_alpha2, REAL eps_th2, sheet *sheet_ptr);
 static int refine_fil (REAL eps2, fil *fil_ptr);
@@ -24,8 +19,6 @@ static int more_fils (sheet *sheet_ptr);
 static vect fil_pos1 (REAL th, fil *fil_ptr);
 static vect fil_pos2 (REAL th_0, int i, int N, node *n_ptr);
 static vect vect_intrp (REAL r_0, REAL r[4], vect pos[4]);
-
-/**************************************************************/
 
 int
 refine (REAL eps_alpha2, REAL eps_th2, int sheet_cnt, sheet sheets[MAX_SHEET_CNT], work **scratch)
@@ -75,8 +68,6 @@ refine (REAL eps_alpha2, REAL eps_th2, int sheet_cnt, sheet sheets[MAX_SHEET_CNT
 
    return 0;
 }
-
-/**************************************************************/
 
 static int
 refine_sheet (REAL eps_alpha2, REAL eps_th2, sheet *sheet_ptr)
@@ -152,8 +143,6 @@ refine_sheet (REAL eps_alpha2, REAL eps_th2, sheet *sheet_ptr)
 
    return 0;
 }
-
-/**************************************************************/
 
 static int
 refine_fil (REAL eps2, fil *fil_ptr)
@@ -241,8 +230,6 @@ fil_dist_sqr (fil *fil_ptr1, fil *fil_ptr2)
    return ans;
 }
 
-/**************************************************************/
-
 static int
 make_fil (fil *fil_ptr)
 {
@@ -308,8 +295,6 @@ make_fil (fil *fil_ptr)
    return 0;
 }
 
-/**************************************************************/
-
 static int
 more_nodes (int new_cnt, fil *fil_ptr)
 {
@@ -324,8 +309,6 @@ more_nodes (int new_cnt, fil *fil_ptr)
 
    return 0;
 }
-
-/**************************************************************/
 
 static int
 more_fils (sheet *sheet_ptr)
@@ -399,8 +382,6 @@ fil_pos2 (REAL th_0, int i, int N, node *n_ptr)
 
    return vect_intrp (th_0, th, pos);
 }
-
-/**************************************************************/
 
 static vect
 vect_intrp (REAL r_0, REAL r[4], vect pos[4])
