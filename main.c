@@ -32,7 +32,7 @@ main (int argc, char **argv)
    int node_min, sheet_cnt, status;
 
    if (argc != 9) {
-      fprintf (stderr, "usage should be : prog <infile> <dtmin> <eps_alpha> <eps_th> " "<stop_time> <tol> <node_min> <outfile>");
+      fprintf (stderr, "usage should be : prog <infile> <dtmin> <eps_alpha> <eps_th> " "<stop_time> <tol> <node_min> <outfile>\n");
       return EXIT_FAILURE;
    }
    if (get_args (argv, &infile, &dtmin, &eps_alpha2, &eps_th2, &stop, &tol, &node_min, &outfile))

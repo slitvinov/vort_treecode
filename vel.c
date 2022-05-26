@@ -27,7 +27,7 @@ main (int argc, char *argv[])
    int node_min, sheet_cnt, sheet_ind, status;
 
    if (argc != 5) {
-      fprintf (stderr, "usage should be : prog <infile> <tol> <node_min> <outfile>");
+      fprintf (stderr, "usage should be : prog <infile> <tol> <node_min> <outfile>\n");
       return EXIT_FAILURE;
    }
    if (get_args (argv, &infile, &tol, &node_min, &outfile))

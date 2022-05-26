@@ -21,7 +21,7 @@ main (int argc, char **argv)
    int fil_cnt;
 
    if (argc != 6) {
-      fprintf (stderr, "usage should be : gendat <del> <dt0> <fil_cnt> <ang> <outfile>");
+      fprintf (stderr, "usage should be : gendat <del> <dt0> <fil_cnt> <ang> <outfile>\n");
       return EXIT_FAILURE;
    }
 
