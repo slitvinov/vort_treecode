@@ -6,8 +6,8 @@ function [u, v] = rhs(dx, dy)
   v = sin(2 * pi * dx) ./ D;
 endfunction
 
-function dr = fun(t, r)
-  global N
+function dr = fun(r, delta)
+  N = numel(r)/2;
   x = r(1:N);
   y = r(N+1:end);
   dr = zeros(2 * N, 1);
@@ -20,15 +20,15 @@ function dr = fun(t, r)
   dr /= 2 * N;
 endfunction
 
-global N delta
+global delta
 delta = 0.5;
 N = 400;
 dG = 1 / N;
-j = (1:N)';
+j = 1:N;
 G = dG * (j - 1);
 x = G + 0.01 * sin(2 * pi * G);
 y = -0.01 * sin(2 * pi * G);
-[t R] = ode45(@fun, [0 4], [x; y]);
+[t R] = ode45(@(t, r) fun(r), [0 4], [x y]);
 
 plot(R(1, 1:N), R(1, N+1:end), 'b-', R(end, 1:N), R(end, N+1:end), 'ro-');
 axis([0 1 -0.275 0.275])
